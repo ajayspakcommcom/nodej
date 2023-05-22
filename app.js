@@ -15,6 +15,10 @@ app.use(bodyParser.json());
 //     origin: ['http://rays.snmih.in']
 // }));
 
+app.use(cors({
+    origin: '*'
+}));
+
 
 const testRoute = require('./routes/testRoute');
 const personRoute = require('./routes/personRoute');
