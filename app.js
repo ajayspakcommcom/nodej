@@ -22,9 +22,9 @@ const personRoute = require('./routes/personRoute');
 app.use(testRoute);
 app.use(personRoute);
 
-app.listen(process.env.PORT || 3334, () => {
+app.listen(process.env.PORT || 3333, () => {
     console.clear();
-    console.log("Application listening on port 3334!");
+    console.log("Application listening on port 3333!");
 });
 
 
