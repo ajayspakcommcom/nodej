@@ -18,5 +18,7 @@ as
             INNER JOIN states st on st.StateID = d.stateID  
             where d.doctorID = @doctorId
 
+            EXEC USP_GET_MEDICINES_LIST 'HAEMAT'
+
     set NOCOUNT off; 
 
