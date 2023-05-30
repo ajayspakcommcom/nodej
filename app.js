@@ -20,10 +20,11 @@ app.use(cors({
 }));
 
 
-const testRoute = require('./routes/testRoute');
+//const testRoute = require('./routes/testRoute');
+const doctorsRoute = require('./routes/doctors');
 const personRoute = require('./routes/personRoute');
 
-app.use(testRoute);
+app.use(doctorsRoute);
 app.use(personRoute);
 
 app.listen(process.env.PORT || 3333, () => {
