@@ -4,10 +4,9 @@ const router = express.Router();
 const controller = require('../controller/doctors');
 
 router.get('/getmydoctorlist/:empId', controller.getMyDoctorList);
+router.get('/getdoctordetails/:doctorId', controller.getDoctorDetails);
 
 module.exports = router;
-
-//router.get('/account-mapping/:empID', controller.getAccountMappingPage);
 
 
 /**

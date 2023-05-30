@@ -20,9 +20,9 @@ exports.getMyDoctorList = (req, res, next) => {
 };
 
 function getMyDoctorList (objParam) {
-    console.clear();
-    console.log(dbConfig)
-    console.log(objParam);
+    //console.clear();
+    //console.log(dbConfig)
+    //console.log(objParam);
     //console.log(storeProc)
     return new Promise((resolve) => {
         var dbConn = new sql.ConnectionPool(dbConfig.dataBaseConfig);
@@ -36,6 +36,46 @@ function getMyDoctorList (objParam) {
                     .then(function (resp) {
                         //console.log(resp)
                         resolve(resp.recordset);
+                        dbConn.close();
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        dbConn.close();
+                    });
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    });
+};
+
+
+
+
+exports.getDoctorDetails = (req, res, next) => {
+    
+    getDoctorDetails(req.params).then((result) => {
+        res.status(_STATUSCODE).json(result);
+    });
+};
+
+function getDoctorDetails (objParam) {
+    //console.clear();
+    //console.log(dbConfig)
+    //console.log(objParam);
+    //console.log(storeProc)
+    return new Promise((resolve) => {
+        var dbConn = new sql.ConnectionPool(dbConfig.dataBaseConfig);
+        dbConn
+            .connect()
+            .then(function () {
+                var request = new sql.Request(dbConn);
+                request
+                    .input("doctorId", sql.Int, objParam.doctorId)
+                    .execute('USP_HAEMAT_GET_DOC_DETAILS')
+                    .then(function (resp) {
+                        //console.log(resp)
+                        resolve(resp.recordsets);
                         dbConn.close();
                     })
                     .catch(function (err) {
