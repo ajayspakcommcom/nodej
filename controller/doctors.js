@@ -13,13 +13,12 @@ USP_HAEMAT_GET_DOC_LIST
 
 
 exports.getMyDoctorList = (req, res, next) => {
-    
     getMyDoctorList(req.params).then((result) => {
         res.status(_STATUSCODE).json(result);
     });
 };
 
-function getMyDoctorList (objParam) {
+function getMyDoctorList(objParam) {
     //console.clear();
     //console.log(dbConfig)
     //console.log(objParam);
@@ -53,13 +52,13 @@ function getMyDoctorList (objParam) {
 
 
 exports.getDoctorDetails = (req, res, next) => {
-    
+
     getDoctorDetails(req.params).then((result) => {
         res.status(_STATUSCODE).json(result);
     });
 };
 
-function getDoctorDetails (objParam) {
+function getDoctorDetails(objParam) {
     //console.clear();
     //console.log(dbConfig)
     //console.log(objParam);
@@ -99,7 +98,7 @@ exports.addBrandDetails = (req, res, next) => {
     });
 };
 
-function addBrandDetails (objParam) {
+function addBrandDetails(objParam) {
     //console.clear();
     console.log(objParam);
     return new Promise((resolve) => {
@@ -110,10 +109,10 @@ function addBrandDetails (objParam) {
                 var request = new sql.Request(dbConn);
                 request
                     .input("doctorId", sql.Int, objParam.doctorId)
-                    .input("empID", sql.Int, objParam.empId)
+                    .input("empID", sql.Int, objParam.empID)
                     .input("medId", sql.Int, objParam.medId)
                     .input("orderDate", sql.Date, objParam.orderDate)
-                    .input("NoOfVials", sql.Int, objParam.noOfVials)
+                    .input("NoOfVials", sql.Int, objParam.NoOfVials)
                     .execute('USP_HAEMAT_ADD_ORDER_DETAILS')
                     .then(function (resp) {
                         //console.log(resp)
@@ -121,12 +120,12 @@ function addBrandDetails (objParam) {
                         dbConn.close();
                     })
                     .catch(function (err) {
-                     //   console.log(err);
+                        //   console.log(err);
                         dbConn.close();
                     });
             })
             .catch(function (err) {
-               // console.log(err);
+                // console.log(err);
             });
     });
 };

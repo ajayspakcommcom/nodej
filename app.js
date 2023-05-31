@@ -21,11 +21,15 @@ app.use(cors({
 
 
 //const testRoute = require('./routes/testRoute');
+const authRoute = require('./routes/auth');
 const doctorsRoute = require('./routes/doctors');
 const personRoute = require('./routes/personRoute');
 
+
+app.use(authRoute);
 app.use(doctorsRoute);
 app.use(personRoute);
+
 
 app.listen(process.env.PORT || 3333, () => {
     console.clear();
