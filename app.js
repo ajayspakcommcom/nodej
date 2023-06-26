@@ -6,7 +6,9 @@ const bodyParser = require('body-parser');
 const { isArray } = require("util");
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
+require('dotenv').config();
 const app = express();
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

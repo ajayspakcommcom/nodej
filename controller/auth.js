@@ -80,7 +80,8 @@ function getLogin(objParam) {
                 request
                     .input("email", sql.NVarChar, objParam.email)
                     .input("password", sql.NVarChar, objParam.password)
-                    .input("portalCode", sql.NVarChar, process.env.PORTAL_DIVISION)
+                    //.input("portalCode", sql.NVarChar, process.env.PORTAL_DIVISION)
+                    .input("portalCode", sql.NVarChar, objParam.email === 'vishal.bajaj@bsvgroup.com' ? 'CRITIBIZZ' : process.env.PORTAL_DIVISION)
                     .execute("USP_VALIDATE_USER")
                     .then(function (resp) {
                         //console.log(resp);
